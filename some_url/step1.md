@@ -1,7 +1,7 @@
 Configure a multi-node Consul on Docker containers for service discovery and KV storage
 
 # Get docker image
-docker pull consul
+`docker pull consul`{{execute}}
 
 # Verify image
 docker images -f 'reference=consul'
