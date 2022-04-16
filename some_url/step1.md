@@ -17,8 +17,7 @@ Configure a multi-node Consul on Docker containers for service discovery and KV 
 `docker run -d -p 8503:8500 -p 8603:8600/udp --name=server3 consul agent -server -ui -node=server-3 -bootstrap-expect=3 -client=0.0.0.0`{{execute}}
 
 # Get their IPs
-`IPLIST="docker exec server1 consul members | awk '{print $2}' | awk 'FNR==2 {print}' | awk -F: '{print $1}'` `docker exec server2 consul members | awk '{print $2}' | awk 'FNR==2 {print}' | awk -F: '{print $1}'` `docker exec server3 consul members | awk '{print $2}' | awk 'FNR==2 {print}' | awk -F: '{print $1}'`"`{{execute}}
-
+`IPLIST="docker exec server1 consul members | awk '{print $2}' | awk 'FNR==2 {print}' | awk -F: '{print $1}' docker exec server2 consul members | awk '{print $2}' | awk 'FNR==2 {print}' | awk -F: '{print $1}' docker exec server3 consul members | awk '{print $2}' | awk 'FNR==2 {print}' | awk -F: '{print $1}'"`{{execute}}
 
 # Make sure they are connected to each other
 docker exec server1 consul join $IPLIST
