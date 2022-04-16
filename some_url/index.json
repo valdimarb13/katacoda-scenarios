@@ -1,8 +1,8 @@
 {
-  "title": "some_scenario",
-  "description": "some_description",
+  "title": "Configuring a multi-node consul",
+  "description": "Learn how to configure a multi-node Consul on Docker containers for service discovery and KV storage",
   "difficulty": "Beginner",
-  "time": "5 minutes",
+  "time": "5-10 minutes",
   "details": {
     "steps": [
       {
