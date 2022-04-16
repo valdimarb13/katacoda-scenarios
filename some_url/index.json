@@ -4,12 +4,19 @@
   "difficulty": "Beginner",
   "time": "5-10 minutes",
   "details": {
-    "steps": [
-      {
-        "title": "Step 1",
-        "text": "step1.md"
-      }
-    ],
+    "steps": [{
+			"title": "",
+			"text": "step1.md"
+		}, {
+			"title": "",
+			"text": "step2.md"
+		}, {
+			"title": "",
+			"text": "step3.md"
+		}, {
+			"title": "",
+			"text": "step4.md"
+		}],
     "intro": {
       "text": "intro.md"
     },

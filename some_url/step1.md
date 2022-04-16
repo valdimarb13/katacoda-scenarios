@@ -6,9 +6,6 @@ Configure a multi-node Consul on Docker containers for service discovery and KV 
 # Verify image
 `docker images -f 'reference=consul'`{{execute}}
 
-
-# Config file
-
 # Run server
 `docker run -d -p 8501:8500 -p 8601:8600/udp --name=server1 consul agent -server -ui -node=server-1 -bootstrap-expect=3 -client=0.0.0.0`{{execute}}
 # Run another server
@@ -38,7 +35,7 @@ Configure a multi-node Consul on Docker containers for service discovery and KV 
 `docker run -p 9001:9001 -d --name=app hashicorp/counting-service:0.0.2`{{execute}}
 
 # Create counting.json for app to register with
-# This file automatically show up inside the container since we have mounted the volume
+This file automatically show up inside the container since we have mounted the volume
 `touch counting.json`{{execute}}
 
 # Register the app by adding the service in /consul/config directory
