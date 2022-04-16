@@ -20,8 +20,7 @@ Configure a multi-node Consul on Docker containers for service discovery and KV 
 `IPLIST="docker exec server1 consul members | awk '{print $2}' | awk 'FNR==2 {print}' | awk -F: '{print $1}' docker exec server2 consul members | awk '{print $2}' | awk 'FNR==2 {print}' | awk -F: '{print $1}' docker exec server3 consul members | awk '{print $2}' | awk 'FNR==2 {print}' | awk -F: '{print $1}'"`{{execute}}
 
 # Make sure they are connected to each other
-docker exec server1 consul join $IPLIST
-
+`docker exec server1 consul join $IPLIST`{{execute}}
 # Get Leader IP
 LEADER=`docker exec server1 consul info | grep leader_addr | awk -F= '{print $2}' | awk -F: '{print $1}' | xargs echo`
 
