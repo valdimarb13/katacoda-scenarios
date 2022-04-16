@@ -16,35 +16,5 @@ Configure a multi-node Consul on Docker containers for service discovery and KV 
 # Get their IPs
 ``IPLIST="`docker exec server1 consul members | awk '{print $2}' | awk 'FNR==2 {print}' | awk -F: '{print $1}'` `docker exec server2 consul members | awk '{print $2}' | awk 'FNR==2 {print}' | awk -F: '{print $1}'` `docker exec server3 consul members | awk '{print $2}' | awk 'FNR==2 {print}' | awk -F: '{print $1}'`"``{{execute}}
 
-# Make sure they are connected to each other
-`docker exec server1 consul join $IPLIST`{{execute}}
-
-# Get Leader IP
-``LEADER=`docker exec server1 consul info | grep leader_addr | awk -F= '{print $2}' | awk -F: '{print $1}' | xargs echo` ``{{execute}}
-
-# Start consul agent
-`docker run -d -v $(pwd):/consul/config -p 8504:8500 -p 8604:8600/udp --name=agent consul agent -ui -node=agent -join=$LEADER`{{execute}}
-
-# Check agent has joined
-`docker exec server1 consul members`{{execute}}
-
-# Pull a small sample app
-`docker pull hashicorp/counting-service:0.0.2`{{execute}}
-
-# Run the app
-`docker run -p 9001:9001 -d --name=app hashicorp/counting-service:0.0.2`{{execute}}
-
-# Create counting.json for app to register with
-This file automatically show up inside the container since we have mounted the volume
-`touch counting.json`{{execute}}
-
-# Register the app by adding the service in /consul/config directory
-`docker exec agent /bin/sh -c "echo '{\"service\": {\"name\": \"counting\", \"tags\": [\"go\"], \"port\": 9001}}' >> /consul/config/counting.json"`{{execute}}
-
-# Reload config
-`docker exec agent consul reload`{{execute}}
-
-# Use Consul DNS to see service is now registered
-`dig @127.0.0.1 -p 8601 counting.service.consul`{{execute}}
 
 
