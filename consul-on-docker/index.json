@@ -21,12 +21,16 @@
         "text": "step3.md"
       },
       {
-        "title": "Run a Small Counting App",
+        "title": "Use Consul KV storage",
         "text": "step4.md"
       },
       {
-        "title": "Register the App on Consul",
+        "title": "Run a Small Counting App",
         "text": "step5.md"
+      },
+      {
+        "title": "Register the App on Consul",
+        "text": "step6.md"
       }
     ],
     "finish": {

@@ -1,21 +1,29 @@
-#### Verify the counting.json in the container
-We can check that our changes to counting.json have actually showed up in the container. After running the docker exec command below we should see the same contents of the file in the container.
+#### Pull a small sample app
+For our purposes we use a small counting application that counts the number of times it is invoked. We will use this to demo how to register an application with Consul.
 
-`docker exec agent cat /consul/config/counting.json`{{execute}}
+`docker pull hashicorp/counting-service:0.0.2`{{execute}}
 
-#### Reload config
-This command tells the consul agent to reload its configurations. This way the consul agent is able to pull the latest configurations and apply them.
+#### Run the app
+`docker run -p 9001:9001 -d --name=app hashicorp/counting-service:0.0.2`{{execute}}
 
-`docker exec agent consul reload`{{execute}}
+#### Create counting.json for app to register with
+When registering a service with Consul we have to declare its configuration in a service file. We will call this file counting.json as we will name our service `counting`. We create this file locally but because we have mounted our local path to the consul agent docker container as a volume, this file will automatically show up inside our container.
 
-#### Verify that our service is registered 
-We can see our service is registered and showing up in Consul.
+`touch counting.json`{{execute}}
+#### Add the configuration for the service
 
-`docker exec agent consul catalog services`{{execute}}
+This is the basic service definition for registration in Consul
 
-#### Use Consul DNS to see service is now registered
-When a service is registered with Consul it becomes reachable on Consul's default domain (assuming you haven't changed it). This follows the syntax of `name.service.consul` where `name` is what we have registered as the name for the service in its configuration file. In our case, since our counting app is registered with the name `counting` it should be available via Consul on `counting.service.consul`. We can do a small DNS query to see if our service is available via Consul. 
+```
+{
+    service: {
+        "name": "counting",
+        "tags": ["go"],
+        "port": 9001
+    }
+}
+```
 
-`dig +short @127.0.0.1 -p 8601 counting.service.consul`{{execute}}
+We can add this configuration to the `counting.json` file we just created.
 
-If successful, it should return the IP of one of the Consul servers. You've deployed Consul using Docker containers and registered a service successfully!
+`echo '{"service": {"name": "counting", "tags": ["go"], "port": 9001}}' > counting.json`{{execute}}

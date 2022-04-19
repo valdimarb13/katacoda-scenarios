@@ -1,29 +1,10 @@
-#### Pull a small sample app
-For our purposes we use a small counting application that counts the number of times it is invoked. We will use this to demo how to register an application with Consul.
+#### Use Consul KV storage
+Consul comes with a built-in KV storage that we can now utilize. We do this simply by using the `consul kv get` and `consul kv put` commands to get and put data in, respectively. 
 
-`docker pull hashicorp/counting-service:0.0.2`{{execute}}
+Let's add the first version of our app as a key-value data in our Consul KV storage. This is the version we will deploy and register on Consul.
 
-#### Run the app
-`docker run -p 9001:9001 -d --name=app hashicorp/counting-service:0.0.2`{{execute}}
+`docker exec agent consul kv put app/counting/version 1`{{execute}}
 
-#### Create counting.json for app to register with
-When registering a service with Consul we have to declare its configuration in a service file. We will call this file counting.json as we will name our service `counting`. We create this file locally but because we have mounted our local path to the consul agent docker container as a volume, this file will automatically show up inside our container.
+Similarly, we can `query` this data as well to get the value we entered back to us as a result.
 
-`touch counting.json`{{execute}}
-#### Add the configuration for the service
-
-This is the basic service definition for registration in Consul
-
-```
-{
-    service: {
-        "name": "counting",
-        "tags": ["go"],
-        "port": 9001
-    }
-}
-```
-
-We can add this configuration to the `counting.json` file we just created.
-
-`echo '{"service": {"name": "counting", "tags": ["go"], "port": 9001}}' > counting.json`{{execute}}
+`docker exec agent consul kv get app/counting/version`{{execute}}
