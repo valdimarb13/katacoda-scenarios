@@ -2,7 +2,7 @@
   "title": "Configuring a multi-node Consul cluster on Docker",
   "description": "Learn how to configure a multi-node Consul cluster on Docker containers for service discovery and KV storage",
   "difficulty": "Beginner",
-  "time": "5-10 minutes",
+  "time": "10-15 minutes",
   "details": {
     "intro": {
       "text": "intro.md"
