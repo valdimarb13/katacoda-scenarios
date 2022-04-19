@@ -18,7 +18,9 @@ When a service is registered with Consul it becomes reachable on Consul's defaul
 
 `dig +short @127.0.0.1 -p 8601 counting.service.consul`{{execute}}
 
-We can see some more domain data with the nslookup command to confirm our service is working.
+Set localhost hostname to `counting.service.consul`. Then we can see some more domain data with the nslookup command to confirm our service is working.
+
+`hostname counting.service.consul`{{execute}}
 
 `nslookup counting.service.consul`{{execute}}
 
@@ -26,4 +28,4 @@ Now, let's verify if our app works with our new service url.
 
 `curl counting.service.consul:9001`{{execute}}
 
-It should return its count the same as when we tried with localhost. You've deployed Consul using Docker containers, used KV storage, and registered a service successfully!
+It should return its count again. You've deployed Consul using Docker containers, used KV storage, and registered a service successfully!
