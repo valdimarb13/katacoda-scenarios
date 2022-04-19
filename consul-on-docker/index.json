@@ -4,27 +4,31 @@
   "difficulty": "Beginner",
   "time": "5-10 minutes",
   "details": {
-    "steps": [
-      {
-        "title": "Start the Consul Cluster",
-        "text": "step1.md"
-      },
-      {
-        "title": "Join the Consul Servers and the Consul Agent",
-        "text": "step2.md"
-      },
-      {
-        "title": "Run a Small Counting App in a Container",
-        "text": "step3.md"
-      },
-      {
-        "title": "Register the App on Consul",
-        "text": "step4.md"
-      }
-    ],
     "intro": {
       "text": "intro.md"
     },
+    "steps": [
+      {
+        "title": "Run the Consul Cluster",
+        "text": "step1.md"
+      },
+      {
+        "title": "Connect the Consul Servers",
+        "text": "step2.md"
+      },
+      {
+        "title": "Run the Consul Agent",
+        "text": "step3.md"
+      },
+      {
+        "title": "Run a Small Counting App",
+        "text": "step4.md"
+      },
+      {
+        "title": "Register the App on Consul",
+        "text": "step5.md"
+      }
+    ],
     "finish": {
       "text": "finish.md"
     }
