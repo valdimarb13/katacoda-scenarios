@@ -1,22 +1,27 @@
 {
-  "title": "Configuring a multi-node consul",
-  "description": "Learn how to configure a multi-node Consul on Docker containers for service discovery and KV storage",
+  "title": "Configuring a multi-node Consul cluster on Docker",
+  "description": "Learn how to configure a multi-node Consul cluster on Docker containers for service discovery and KV storage",
   "difficulty": "Beginner",
   "time": "5-10 minutes",
   "details": {
-    "steps": [{
-			"title": "",
-			"text": "step1.md"
-		}, {
-			"title": "",
-			"text": "step2.md"
-		}, {
-			"title": "",
-			"text": "step3.md"
-		}, {
-			"title": "",
-			"text": "step4.md"
-		}],
+    "steps": [
+      {
+        "title": "Start the Consul Cluster",
+        "text": "step1.md"
+      },
+      {
+        "title": "Join the Consul Servers and the Consul Agent",
+        "text": "step2.md"
+      },
+      {
+        "title": "Run a Small Counting App in a Container",
+        "text": "step3.md"
+      },
+      {
+        "title": "Register the App on Consul",
+        "text": "step4.md"
+      }
+    ],
     "intro": {
       "text": "intro.md"
     },
