@@ -22,4 +22,8 @@ We can see some more domain data with the nslookup command to confirm our servic
 
 `nslookup counting.service.consul`{{execute}}
 
-If successful, it should return the IP of one of the Consul servers. You've deployed Consul using Docker containers, used KV storage, and registered a service successfully!
+Now, let's verify if our app works with our new service url.
+
+`curl counting.service.consul:9001`{{execute}}
+
+It should return its count the same as when we tried with localhost. You've deployed Consul using Docker containers, used KV storage, and registered a service successfully!

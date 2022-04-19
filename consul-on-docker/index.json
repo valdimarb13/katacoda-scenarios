@@ -31,6 +31,10 @@
       {
         "title": "Register the App on Consul",
         "text": "step6.md"
+      },
+      {
+        "title": "Easter Egg",
+        "text": "step7.md"
       }
     ],
     "finish": {

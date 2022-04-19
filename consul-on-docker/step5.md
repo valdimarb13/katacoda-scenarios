@@ -6,6 +6,11 @@ For our purposes we use a small counting application that counts the number of t
 #### Run the app
 `docker run -p 9001:9001 -d --name=app hashicorp/counting-service:0.0.2`{{execute}}
 
+### Verify our app is running correctly
+The app is a counting app that returns the current count. The counts are based on the number of times it is invoked. Let's see if the app is reachable and running properly. 
+
+`curl http://localhost:9001`{{execute}}
+
 #### Create counting.json for app to register with
 When registering a service with Consul we have to declare its configuration in a service file. We will call this file counting.json as we will name our service `counting`. We create this file locally but because we have mounted our local path to the consul agent docker container as a volume, this file will automatically show up inside our container.
 
