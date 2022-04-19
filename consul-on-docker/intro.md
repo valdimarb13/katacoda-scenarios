@@ -20,4 +20,4 @@ In this tutorial we first go through how to deploy Consul on docker containers w
 
 For our tutorial we setup a Consul cluster of three servers. We also have a Consul agent running in another Docker container. We register a small counting application on the agent and expose it via the Consul DNS.
 
-![](consul_on_docker.png)
+![](assets/consul_on_docker.png)
